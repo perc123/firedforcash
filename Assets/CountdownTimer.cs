@@ -16,6 +16,7 @@ public class CountdownTimer : MonoBehaviour
     public float popupTargetScale = 0.62f;
     public float scaleDuration = 0.5f;
 
+    private bool isTimerRunning = false;
 
     private float timeLeft;
     private bool hasTriggeredPopup = false;
@@ -56,12 +57,13 @@ public class CountdownTimer : MonoBehaviour
     void UpdateAudioPitch()
     {
         if (backgroundAudio == null) return;
+        if (isTimerRunning == false) return;
 
         float t = 1f - (remainingTime / totalTime); // 0 at start, 1 at end
         backgroundAudio.pitch = Mathf.Lerp(minPitch, maxPitch, t);
     }
-    
-        System.Collections.IEnumerator ScaleUpImage()
+
+    System.Collections.IEnumerator ScaleUpImage()
     {
         float elapsed = 0f;
         Vector3 targetScale = new Vector3(popupTargetScale, popupTargetScale, popupTargetScale);
@@ -73,5 +75,16 @@ public class CountdownTimer : MonoBehaviour
             yield return null;
         }
         endImage.localScale = targetScale; // final snap to correct scale
+    }
+    public void StartTimer()
+    {
+        remainingTime = totalTime;
+        isTimerRunning = true;
+
+        if (backgroundAudio != null)
+        {
+            backgroundAudio.pitch = minPitch;
+            backgroundAudio.Play();  // <-- Start the audio when timer starts
+        }
     }
 }
