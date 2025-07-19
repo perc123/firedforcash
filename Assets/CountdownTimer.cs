@@ -3,7 +3,7 @@ using TMPro;
 
 public class CountdownTimer : MonoBehaviour
 {
-    public float totalTime = 240f; // 4 minutes
+    public float totalTime = 155f;
     private float remainingTime;
 
     public TMP_Text timerText;
