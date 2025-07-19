@@ -1,0 +1,29 @@
+# Ignore Unity cache and temp folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# User-specific settings
+UserSettings/
+
+# Visual Studio / MonoDevelop project files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Others
+*.pidb.meta
